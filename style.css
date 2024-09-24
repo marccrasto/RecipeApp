@@ -1,0 +1,228 @@
+/*Import using @import. Here we have imported a font.*/
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
+/*Change applies to all elements*/
+* {
+    box-sizing: border-box;
+}
+
+/*Change only applies to elements in the body of the html page*/
+body {
+    font-family: 'PT Serif', sans-serif;
+    margin: 0;
+    background: #89fffd;
+    background: -webkit-linear-gradient(to right, #ef32d9, #89fffd);
+    background: linear-gradient(to right, #ef32d9, #89fffd);
+    /*display: flex allows you to manipulate items position in the container. So css properties such as justify-content and align-items only
+    seem to work when diplay: flex is on.*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.mobile-container {
+    width: 400px;
+    background: rgb(238, 238, 238);
+    box-shadow: 0 0 10px black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+img {
+    /*max-width ensures the picture doesn't go beyond the width of it's container. It works relative to the container range. So if you have
+    max-width of 100% it will occupy the full-container. If you have a max-width of 75%, it only occupies 75% of the container. Note that these
+    two cases only apply when the actual image width exceeds container width. */
+    max-width: 100%;
+    
+}
+
+header {
+    display: flex;
+    /*Refers to vertical axis*/
+    align-items: center;
+    /*Refers to horizontal axis*/
+    justify-content: center;
+    padding: 1rem;
+}
+
+header input {
+    background: #DAE2F8;
+    background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);
+    background: linear-gradient(to right, #D6A4A4, #DAE2F8);
+    border: none;
+    /*border-radius seems to add a 3d effect (noticeable when you move in closer)*/
+    border-radius: 5px;
+    /*If the padding has two attributes, first one refers to height and second refers to width*/
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 5px black;
+    font-family: inherit;
+}
+
+header button {
+    /*Changes the color of the box containing the icon*/
+    background-color: transparent;
+    /*Changes the color of the icon*/
+    color: #ef32d9;
+    border: none;
+    padding: 0.5rem;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fav-container {
+    padding: 1rem;
+    text-align: center;
+    background: #DAE2F8;
+    background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);
+    background: linear-gradient(to right, #D6A4A4, #DAE2F8);
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0 0 5px black;
+}
+
+.fav-meals {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    /*If there is overflow (content goes beyond container), a scrollbar is created automatically to scroll within container*/
+    overflow: auto;
+    justify-content: center;
+}
+
+.fav-meals li {
+    width: 100px;
+    margin: 5px;
+    position: relative;
+}
+
+.fav-meals img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2.5px solid;
+    border-color: rgb(174, 174, 174);
+    background: white;
+    object-fit: cover;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+}
+
+.fav-meals li span {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.fav-meals .remove {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    opacity: 0;
+}
+
+/*The addition of opacity:1 in hover (while setting original opacity to 0) creates an effect where if you hover over the image, it will display
+ the remove button. Otherwise, the remove button is hidden.*/
+.fav-meals li:hover .remove {
+    opacity: 1;
+}
+
+.meal {
+    margin: 20px;
+    background: rgb(226, 226, 226);
+    box-shadow: 0 0 5px black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.meal-header {
+    position: relative; /*Used in conjunction with position: absolute and the commands below to write text on top of an image.*/
+}
+
+.meal-header .random {
+    position: absolute;
+    top: 20px;
+    background-color: white;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+}
+
+.meal-header img {
+    padding-bottom: 10px;
+    height: 250px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.meal-body {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.meal-body h4{
+    margin: 0;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.meal-body .fav-btn {
+    background-color: transparent;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: rgb(73, 73, 73);
+    cursor: pointer;
+
+}
+
+.meal-body .fav-btn.active {
+    color: red;
+}
+
+.meal-info-container {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meal-info-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup {
+    max-width: 800px;
+    max-height: 100vh;
+    background: white;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 5px;
+    position: relative;
+    overflow: auto;
+}
+
+.meal-info h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.popup button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 0rem;
+}
