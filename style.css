@@ -13,14 +13,14 @@ body {
     background: #89fffd;
     background: -webkit-linear-gradient(to right, #ef32d9, #89fffd);
     background: linear-gradient(to right, #ef32d9, #89fffd);
-    /*display: flex allows you to manipulate items position in the container. So css properties such as justify-content and align-items only
-    seem to work when diplay: flex is on.*/
+    /* display: flex enables flexible layout and allows use of align-items and justify-content */
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
 
+/* Container that mimics a mobile app card layout */
 .mobile-container {
     width: 400px;
     background: rgb(238, 238, 238);
@@ -29,40 +29,34 @@ body {
     overflow: hidden;
 }
 
+/* Images scale to fit container width without exceeding it */
 img {
-    /*max-width ensures the picture doesn't go beyond the width of it's container. It works relative to the container range. So if you have
-    max-width of 100% it will occupy the full-container. If you have a max-width of 75%, it only occupies 75% of the container. Note that these
-    two cases only apply when the actual image width exceeds container width. */
     max-width: 100%;
-    
 }
 
+/* Header layout: center-aligned horizontally and vertically */
 header {
     display: flex;
-    /*Refers to vertical axis*/
     align-items: center;
-    /*Refers to horizontal axis*/
     justify-content: center;
     padding: 1rem;
 }
 
+/* Search input field styling */
 header input {
     background: #DAE2F8;
     background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);
     background: linear-gradient(to right, #D6A4A4, #DAE2F8);
     border: none;
-    /*border-radius seems to add a 3d effect (noticeable when you move in closer)*/
     border-radius: 5px;
-    /*If the padding has two attributes, first one refers to height and second refers to width*/
     padding: 0.5rem 1rem;
     box-shadow: 0 0 5px black;
     font-family: inherit;
 }
 
+/* Search button styling */
 header button {
-    /*Changes the color of the box containing the icon*/
     background-color: transparent;
-    /*Changes the color of the icon*/
     color: #ef32d9;
     border: none;
     padding: 0.5rem;
@@ -71,6 +65,7 @@ header button {
     cursor: pointer;
 }
 
+/* Favorite meals container styling */
 .fav-container {
     padding: 1rem;
     text-align: center;
@@ -82,21 +77,23 @@ header button {
     box-shadow: 0 0 5px black;
 }
 
+/* Flex layout for horizontal scrolling of favorite meals */
 .fav-meals {
     display: flex;
     list-style: none;
     padding: 0;
-    /*If there is overflow (content goes beyond container), a scrollbar is created automatically to scroll within container*/
     overflow: auto;
     justify-content: center;
 }
 
+/* Individual favorite meal item */
 .fav-meals li {
     width: 100px;
     margin: 5px;
     position: relative;
 }
 
+/* Circular thumbnails for favorites */
 .fav-meals img {
     width: 70px;
     height: 70px;
@@ -109,11 +106,13 @@ header button {
     cursor: pointer;
 }
 
+/* Meal name under the image */
 .fav-meals li span {
     font-size: 1rem;
     cursor: pointer;
 }
 
+/* Remove button (hidden by default) */
 .fav-meals .remove {
     position: absolute;
     top: 0px;
@@ -124,12 +123,12 @@ header button {
     opacity: 0;
 }
 
-/*The addition of opacity:1 in hover (while setting original opacity to 0) creates an effect where if you hover over the image, it will display
- the remove button. Otherwise, the remove button is hidden.*/
+/* Show remove button on hover */
 .fav-meals li:hover .remove {
     opacity: 1;
 }
 
+/* Main meal container styling */
 .meal {
     margin: 20px;
     background: rgb(226, 226, 226);
@@ -138,10 +137,12 @@ header button {
     overflow: hidden;
 }
 
+/* Meal header contains image + optional "Random Recipe" tag */
 .meal-header {
-    position: relative; /*Used in conjunction with position: absolute and the commands below to write text on top of an image.*/
+    position: relative;
 }
 
+/* "Random Recipe" tag overlay styling */
 .meal-header .random {
     position: absolute;
     top: 20px;
@@ -151,6 +152,7 @@ header button {
     padding: 10px;
 }
 
+/* Meal image size */
 .meal-header img {
     padding-bottom: 10px;
     height: 250px;
@@ -158,6 +160,7 @@ header button {
     cursor: pointer;
 }
 
+/* Container for meal title and heart button */
 .meal-body {
     display: flex;
     justify-content: space-between;
@@ -165,12 +168,14 @@ header button {
     padding-right: 1rem;
 }
 
-.meal-body h4{
+/* Meal title styling */
+.meal-body h4 {
     margin: 0;
     margin-bottom: 20px;
     cursor: pointer;
 }
 
+/* Favorite (heart) button styling */
 .meal-body .fav-btn {
     background-color: transparent;
     border: none;
@@ -178,13 +183,14 @@ header button {
     font-size: 1.2rem;
     color: rgb(73, 73, 73);
     cursor: pointer;
-
 }
 
+/* When favorited, turn heart red */
 .meal-body .fav-btn.active {
     color: red;
 }
 
+/* Overlay container for meal info popup */
 .meal-info-container {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -197,11 +203,13 @@ header button {
     align-items: center;
 }
 
+/* Hide popup when 'hidden' class is applied */
 .meal-info-container.hidden {
     opacity: 0;
     pointer-events: none;
 }
 
+/* Popup content box */
 .popup {
     max-width: 800px;
     max-height: 100vh;
@@ -213,11 +221,13 @@ header button {
     overflow: auto;
 }
 
+/* Popup meal title styling */
 .meal-info h1 {
     text-align: center;
     margin-top: 0;
 }
 
+/* Close (X) button on popup */
 .popup button {
     border: none;
     cursor: pointer;
